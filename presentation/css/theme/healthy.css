@@ -1,0 +1,14 @@
+.reveal section img {
+  display: block;
+  margin: auto;
+  padding: 20px !important;
+  max-height: 360px;
+}
+
+p img.right {
+  max-width: 420px;
+  position: absolute;
+  right: -277px;
+  top: 124px;
+  margin-right: 20px;
+}

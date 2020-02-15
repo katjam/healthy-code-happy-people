@@ -1,0 +1,8 @@
+presentation/*
+
+!presentation/index.html
+!presentation/SLIDES.md
+!presentation/assets
+!presentation/assets/*
+
+!presentation/css/themes/healthy.css
