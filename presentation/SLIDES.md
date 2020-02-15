@@ -1,4 +1,4 @@
-# Healthy Code, happy People
+# Healthy Code, Happy People
 ![](assets/images/elm.png)
 
 ---
