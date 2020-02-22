@@ -64,7 +64,10 @@ Note:
 - Funtional is a safe / predictable space
 - Someone mentioned Elm
 
-<!--CHOOSE and Init Stacks -->
+<!-- CHOOSE and Init Stacks (1) -->
+<!-- js EXCITED dive in start scaffolding - swim across lake POWERFUL-->
+<!-- Elm GUILTY learn syntax, explore model - wander round lake slowly EXCITED -->
+<!-- Project boiler plate -->
 
 +++
 
@@ -86,7 +89,19 @@ Note:
 - Create- apps
 - Is anyone using it?
 
-<!-- MODEL, PLAN and Code -->
+<!-- MODEL (2), PLAN (3) and CODE (4) -->
+<!-- (2) Start to make the things -->
+<!-- js BORED Install some linting and build tools. Argue a little but agree standards. HUFFY -->
+<!-- Elm CAUTIOUS Sort out data model and figure out update code EXHILERATED -->
+<!-- Agreed initial domain model -->
+<!-- (3) Reach the limits of the initial model -->
+<!-- js ANNOYED - dead end - meet round the campfire CONFIDENT -->
+<!-- Elm CONFIDENT - dead end - meet round the campfire CONFIDENT  -->
+<!-- Realise need new model -->
+<!-- (4) Build and Polish -->
+<!-- js EXCITED Come across and old cabin. In the morning they realise the roof leaky. shrug it off, they have a lot of features GUILTY -->
+<!-- Elm EXCITED Build own shelter. In the morning they admire their shelter. It's a bit rough, but perfectly sound. They have less features CONFIDENT -->
+<!-- MVP prototype -->
 
 ---
 
@@ -95,7 +110,10 @@ Note:
 - Elm UI? No more css
 - What does the team look like?
 
-<!-- INITIAL RELASE AND TESTING -->
+<!-- INITIAL RELASE AND TESTING (5) - Try it out, Show it off -->
+<!-- js CAUTIOUS Realise they don't need some of the features ANNOYED -->
+<!-- Elm PROUD Are able to go through the code with client PROUD -->
+<!-- Test with users and demo to client -->
 
 ---
 
@@ -104,7 +122,11 @@ Note:
 - mutable objects
 - elm storytelling
 
-<!-- MAKING CHANGES -->
+<!-- MAKING CHANGES (6) Tweaks and leads step back a little now the architecture is done -->
+<!-- js CONFIDENT Mess up the css. Can't tweek the 3rd party library. Don't realise they've made a big hole in the wall. ANXIOUS -->
+<!-- Elm ANXIOUS Amend the 'shelter' feature with no problems. Good error messages. PROUD -->
+<!-- Tweaks and a couple new features -->
+
 
 ---
 
@@ -114,7 +136,10 @@ Note:
 - Alter elm-ui vs css
 
 
-<!-- MAINTENANCE -->
+<!-- MAINTENANCE (7) project not been worked on for a while -->
+<!-- js CONFUSED wander through the underground cave system - many dead ends and rockslides LUCKY -->
+<!-- Elm CONFIDENT Have a map and get straight through PROUD -->
+<!-- New feature added to mature code base -->
 
 ---
 
@@ -143,4 +168,4 @@ Note:
 
 ---
 
-##Thank you
+## Thank you
