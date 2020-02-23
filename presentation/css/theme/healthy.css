@@ -5,6 +5,15 @@
   padding: 15px !important;
 }
 
+.reveal section img.large-img {
+  max-height: 500px;
+}
+
+.reveal section img.wonk-img {
+  margin: 15px 0 0 90px;
+  transform: rotate(40deg);
+}
+
 #thanks li,
 #me li {
   font-size: 25px;
@@ -15,4 +24,10 @@
 #thanks img {
   float: left;
   margin: 0 25px;
+}
+
+#stage-1 img,
+#app-venture img{
+  display: inline;
+  max-height: 380px;
 }

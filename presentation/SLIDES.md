@@ -41,7 +41,7 @@ Note:
 - It would surprise my colleagues - running of js - equality, freedom it creates by having a core of universally supported standard on majority of our devices
 - I don't like reading or writing javascript
 - You're probably a lot better at writing javascript than I am
-- Might think new tech is fun - but old tech is safer
+- Might think new tech is fun - but old tech is safer - new to you does not mean new.
 - You might think popular tech is reliable and niche tech is fragile
 - Like me, you proably want to write reliable software that you can be proud of
 - and feel confident when others collaboate with you on your code
@@ -60,7 +60,7 @@ Note:
 - A functional programming primer
 - Intended to diss javascript
 - Intended to make anyone feel bad about their tools and choices
-- A true story
+- It's one possible experience
 
 +++
 
@@ -86,9 +86,10 @@ Note:
 
 ## A Tale of 2 App-ventures
 
-IMG: Welcome banner with 2 signposts / paths
+![](assets/images/elm-signpost.jpg)
+![](assets/images/js-signpost.jpg)
 
-New project!
+### New project!
 
 Note:
 (7 min)
@@ -98,33 +99,60 @@ Note:
 - Funtional is a safe / predictable space
 - Someone mentioned Elm
 
-<!-- CHOOSE and Init Stacks (1) -->
-<!-- js EXCITED dive in start scaffolding - swim across lake POWERFUL-->
-<!-- Elm GUILTY learn syntax, explore model - wander round lake slowly EXCITED -->
-<!-- Project boiler plate -->
++++
 
----
+<!-- .element id="stage-1" data-transition="zoom" -->
 
--  Syntax too confusing?
--  WHat is functional
--  What is static typing for anyway?
--  Can I use webpack?
+## Stage one start
+
+![](assets/images/elm-guilty.jpg)
+![](assets/images/react-excited.jpg)
+
+### Choose and initialise the stack
 
 Note:
-- syntax confusing - Ironically, exp devs seem to have more trouble reading Elm than beginners
-- Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
-- I tried to explain that - yes Elm can make more complex apps safer but it's also a solid foundation for any UI
+- React team Excited! They dive in and start scaffolding.
+- The Elm tean is feeling a little guilty, they'll have to find out more.
 
 +++
 
-## What does it look like in production?
+![](assets/images/elm-start-worries.jpg)<!-- .element class="large-img" -->
 
-- Real world
-- Create- apps
-- Is anyone using it?
+Note:
+- Contray to popular belief, you don't have to throw out everything you know.
+- You are already using many functional concepts
+- Lots of big and small companies in all kinds of sectors all over the world are using it in production.
+- 5 conferences (Japan, St Louis, Chicago, Paris, Oslo)
+
++++
+
+## Syntax too confusing?
+
+Note:
+- syntax confusing - Ironically, exp devs seem to have more trouble reading Elm than beginners
+- Elm can make more complex apps safer but it's also a solid foundation for any UI
+
++++
+
+## What's so great about static typing?
+
++++
+
+<!-- .element id="stage-1" data-transition="zoom" -->
+
+## Stage one end
+
+![](assets/images/elm-excited.jpg)
+![](assets/images/react-powerful.jpg)<!-- .element class="wonk-img" -->
+
+
+### Project Boilerplate
 
 Note:
 (12 min)
+- React team feeling powerful! They've got a clean new project to dive into.
+- Elm team wander around exploring carefully - they feel excited - learning something new.
+- Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
 
 <!-- MODEL (2), PLAN (3) and CODE (4) -->
 <!-- (2) Start to make the things -->
