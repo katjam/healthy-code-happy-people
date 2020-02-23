@@ -10,7 +10,7 @@
 }
 
 .reveal section img.wonk-img {
-  margin: 15px 0 0 90px;
+  margin: 10px 0 0 90px;
   transform: rotate(40deg);
 }
 
@@ -29,5 +29,5 @@
 #stage-1 img,
 #app-venture img{
   display: inline;
-  max-height: 380px;
+  max-height: 270px;
 }

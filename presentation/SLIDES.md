@@ -18,7 +18,8 @@
 Note:
 (1 min)
 - Developing software in small teams over decade with Neontribe. Work with non-profits to build digital tools that compliment their over-stretched services
-- I'm not a computer scientist or engineer - I just like using code to make stuff
+- not a computer scientist nor engineer - I just like using code to make stuff
+- not a mathematician nor a category theorist... don't need to know it to write reliable User Interfaces
 - I love javascript TICK
 
 ---
@@ -40,10 +41,11 @@ Note:
 (3 min)
 - It would surprise my colleagues - running of js - equality, freedom it creates by having a core of universally supported standard on majority of our devices
 - I don't like reading or writing javascript
-- You're probably a lot better at writing javascript than I am
-- Might think new tech is fun - but old tech is safer - new to you does not mean new.
+- TICK: You're probably a lot better at writing javascript than I am - because don't do it very much
+- TICK: Might think new tech is fun - but old tech is safer - new to you does not mean new.
+- functional 1930's - React Elm 2014/ 2015
 - You might think popular tech is reliable and niche tech is fragile
-- Like me, you proably want to write reliable software that you can be proud of
+- TICK: Like me, you proably want to write reliable software that you can be proud of
 - and feel confident when others collaboate with you on your code
 
 +++
@@ -51,27 +53,28 @@ Note:
 ## This talk is not
 
 IMG![](assets/images/functional-primer.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
-IMG![](assets/images/anti-js.jpg)<!-- .element class="fragment" data-fragment-index="2" -->
-IMG![](assets/images/tools-choices.jpg)<!-- .element class="fragment" data-fragment-index="3" -->
-IMG![](assets/images/true-story.jpg)<!-- .element class="fragment" data-fragment-index="4" -->
+IMG![](assets/images/anti-js.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
+IMG![](assets/images/tools-choices.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
+IMG![](assets/images/true-story.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
 
 Note:
-(4 min)
+(3 min)
 - A functional programming primer
 - Intended to diss javascript
 - Intended to make anyone feel bad about their tools and choices
 - It's one possible experience
+- A story around a brand new product - but Elm can also be used to add elements to an exisiting js project
 
 +++
 
 ## This talk is
 IMG![](assets/images/humans-vs-computers.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
-IMG![](assets/images/react.jpg)<!-- .element class="fragment" data-fragment-index="2" -->
-IMG![](assets/images/elm.jpg)<!-- .element class="fragment" data-fragment-index="3" -->
-IMG![](assets/images/human-complication.jpg)<!-- .element class="fragment" data-fragment-index="4" -->
+IMG![](assets/images/react.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
+IMG![](assets/images/elm.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
+IMG![](assets/images/human-complication.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
 
 Note:
-(6 min)
+(4 min)
 - Asking you to think about what humans are good and what computers are good at
 - Exposing some of the benefits of functional, static typing
 - Going to make some bad assumptions about react (I don't use it much)
@@ -92,18 +95,21 @@ Note:
 ### New project!
 
 Note:
-(7 min)
+(5 min)
 - A story about 2 teams of people who set off with same goal and took different paths
 - After the initial project is scoped and prototyped, we have choices to make
-- What framework etc - we know react vs. we heard Elm 
-- Funtional is a safe / predictable space
-- Someone mentioned Elm
+- What tech stack?
+- Of course includes the frontend - we know react vs. we heard about Elm
+- And of course typescript, angular, reason ml, etc... there are many
+- In this story, 1 team intrigued by functional is a safe / predictable space
+- The other team is sticking with React
+
 
 +++
 
 <!-- .element id="stage-1" data-transition="zoom" -->
 
-## Stage one start
+## Stage 1 start
 
 ![](assets/images/elm-guilty.jpg)
 ![](assets/images/react-excited.jpg)
@@ -113,6 +119,7 @@ Note:
 Note:
 - React team Excited! They dive in and start scaffolding.
 - The Elm tean is feeling a little guilty, they'll have to find out more.
+- Common exp. Obviously only happens on first Elm project.
 
 +++
 
@@ -123,36 +130,141 @@ Note:
 - You are already using many functional concepts
 - Lots of big and small companies in all kinds of sectors all over the world are using it in production.
 - 5 conferences (Japan, St Louis, Chicago, Paris, Oslo)
+- More than a language, defines an architecture that helps us write good code
 
 +++
 
-## Syntax too confusing?
+### Strings, Math & Lists
+
+```elm
+"Hello " ++ "Norwich!"
+> "Hello Norwich!" : String
+```
+
+```elm
+5 / 2
+> 2.5 : Float
+
+5 // 2
+> 2 : Int
+```
+
+```elm
+names = ["Alex", "Shaun"]
+
+List.reverse names
+> ["Shaun", "Alex"] : List String
+
+List.length names
+> 2 : Int
+```
 
 Note:
 - syntax confusing - Ironically, exp devs seem to have more trouble reading Elm than beginners
-- Elm can make more complex apps safer but it's also a solid foundation for any UI
+- Concatenate strings with `++`
+- Division can be floating point / or integer //
+- Lists must contain items of same type
+
++++
+
+### Tuples & Records
+
+```elm
+myFailureTuple = (False, "Oh no!", HomePage)
+mySuccessTuple = (True, "Yay!", NextPage)
+
+event = { attendees = 50, name = "nor(DEV):con" }
+
+event.name
+> "nor(DEV):con" : String
+
+.name event
+> "nor(DEV):con" : String
+
+{ event | attendees = 500 }
+> { attendees = 500, name = "nor(DEV):con" }
+    : { attendees : number, name : String }
+```
+
+Note:
+- Tuples are fixed in number of values but can be mixed types
+- Records are like objects but type safe
+- Get value with dot or as a function
+- Update a record
+
++++
+
+### Functions!
+
+```elm
+addTwoString : Int -> Int -> String
+addTwoString x y =
+  toString x ++ "+" ++ toString y ++ "=" ++ toString (x + y)
+
+addTwoString 2 3
+> "2+3=5"
+```
+
+Note:
+- The type annotation
+- The function definition
+- Call the function
+- The result is a string
+
++++
+
+### Logic
+
+```
+if True then "yes" else "no"
+> "yes"
+```
+
+```
+case time of
+    Morning ->
+        "Hello"
+
+    Evening ->
+        "Goodbye"
+
+    Midnight ->
+        ""
+```
+
+Note:
+- if then else has 2 branches determined by boolean
+- case statement more than 2 possibilities
+- Note that every branch of the case must return the same type
 
 +++
 
 ## What's so great about static typing?
 
+Note:
+- Elm can make more complex apps safer but it's also a solid foundation for any UI
+
 +++
 
 <!-- .element id="stage-1" data-transition="zoom" -->
 
-## Stage one end
+## Stage 1 end
+#### Project Boilerplate
 
 ![](assets/images/elm-excited.jpg)
 ![](assets/images/react-powerful.jpg)<!-- .element class="wonk-img" -->
 
+#### create-elm-app 20,960 lines<!-- .element class="fragment" -->
+#### create-react-app 2,652,534 lines<!-- .element class="fragment" -->
 
-### Project Boilerplate
 
 Note:
-(12 min)
-- React team feeling powerful! They've got a clean new project to dive into.
+(10 min)
 - Elm team wander around exploring carefully - they feel excited - learning something new.
-- Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
+- They've been reassured by the great docs, easy set up and supportive community
+- React team feeling powerful! They've got a clean new project to dive into.
+- Not advocate use, but popular way to tear up. Had a hunch about number of lines.
+- TICK TICK - not wrong
 
 <!-- MODEL (2), PLAN (3) and CODE (4) -->
 <!-- (2) Start to make the things -->
@@ -170,14 +282,37 @@ Note:
 
 ---
 
+## Stage 2 start
+
+![](assets/images/elm-cautious.jpg)
+![](assets/images/react-bored.jpg)
+
+### Start to make the things
+
+Note:
+- React team Excited! They dive in and start scaffolding.
+- The Elm tean is feeling a little guilty, they'll have to find out more.
+- Common exp. Obviously only happens on first Elm project.
+
+
+
++++
+
 - Domain modelling in Elm
 - What is this TEA you speak of?
 - Elm UI? No more css
 - What does the team look like?
 
+![](assets/images/tea.png)
+
 
 Note:
-(18 min)
+(20 min)
+- model - your 'state'
+- update function like a react redux reducer - unidirectional dataflow 
+- view - display
+- subscriptions for outside events like time
+- Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
 
 <!-- INITIAL RELASE AND TESTING (5) - Try it out, Show it off -->
 <!-- js CAUTIOUS Realise they don't need some of the features ANNOYED -->
@@ -244,7 +379,8 @@ Note:
 - Our ultimate goal is reliable apps
 - Your job should not include unneccessary stress
 - If you are writing code that's hard for some of your team to understand, you won't feel proud.
-- We have a finite amount of time. Try to spend it building, testing and designing features; not discovering, discussing and fixing bugs
+- We have a finite amount of time. Try to spend it building, testing and designing features; not discovering, discussing and fixing bugs.
+- Elm is a language based on functional programming principles that compiles to Javascript and defines an architecture that makes rapid prototyping, evolving and scaling web apps and maintaining a single source of truth easy.
 
 ---
 
