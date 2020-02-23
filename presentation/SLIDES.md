@@ -266,20 +266,6 @@ Note:
 - Not advocate use, but popular way to tear up. Had a hunch about number of lines.
 - TICK TICK - not wrong
 
-<!-- MODEL (2), PLAN (3) and CODE (4) -->
-<!-- (2) Start to make the things -->
-<!-- js BORED Install some linting and build tools. Argue a little but agree standards. HUFFY -->
-<!-- Elm CAUTIOUS Sort out data model and figure out update code EXHILERATED -->
-<!-- Agreed initial domain model -->
-<!-- (3) Reach the limits of the initial model -->
-<!-- js ANNOYED - dead end - meet round the campfire CONFIDENT -->
-<!-- Elm CONFIDENT - dead end - meet round the campfire CONFIDENT  -->
-<!-- Realise need new model -->
-<!-- (4) Build and Polish -->
-<!-- js EXCITED Come across and old cabin. In the morning they realise the roof leaky. shrug it off, they have a lot of features GUILTY -->
-<!-- Elm EXCITED Build own shelter. In the morning they admire their shelter. It's a bit rough, but perfectly sound. They have less features CONFIDENT -->
-<!-- MVP prototype -->
-
 ---
 
 ## Stage 2 start
@@ -290,29 +276,110 @@ Note:
 ### Start to make the things
 
 Note:
-- React team Excited! They dive in and start scaffolding.
-- The Elm tean is feeling a little guilty, they'll have to find out more.
-- Common exp. Obviously only happens on first Elm project.
-
-
+- The Elm team is feeling cautious. Many patterns are new to them.
+- React team bored. Install some linting and build tools. 
 
 +++
 
-- Domain modelling in Elm
+- Domain modeling in Elm
 - What is this TEA you speak of?
 - Elm UI? No more css
+- html?
 - What does the team look like?
 
 ![](assets/images/tea.png)
 
 
 Note:
-(20 min)
+(13 min)
 - model - your 'state'
 - update function like a react redux reducer - unidirectional dataflow 
 - view - display
 - subscriptions for outside events like time
+
++++
+
+## Stage 2 end
+#### Initial domain model
+
+![](assets/images/elm-exhilerated.jpg)
+![](assets/images/react-huffy.jpg)
+
+
+Note:
+(15 min)
+- Elm team exhilerated.
+- They've figured out how the architeture works 
+- React team Huffy they've been arguing a little and coding over each other's work.
+- Both teams have come to an agreed model
+
+
+---
+
+## Stage 3 start
+
+![](assets/images/elm-confident.jpg)
+![](assets/images/react-annoyed.jpg)
+
+### Change of plan
+
+Note:
+(17 min)
+- Reach limits of the initial model
+- Elm Team confident - they meet a dead end but they trust the compiler
+- React Team annoyed - they meet a dead end and fear a refactor
+
++++
+
+## Refactor time!
+
++++
+
+## Stage 3 end
+#### The 2 teams meet and find they've had same challenges
+
+![](assets/images/elm-confident.jpg)
+![](assets/images/react-confident.jpg)
+
+
+Note:
+(18 min)
+- Elm team still confident. They can see they have good patterns.
+- React team confident. They started to trust each other and have a new, more robust model.
 - Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
+
+---
+
+## Stage 4 start
+
+![](assets/images/elm-excited.jpg)
+![](assets/images/react-excited.jpg)
+
+### Build & polish
+
+Note:
+(20 min)
+- Elm Team Excited - they start writing the functionality they need
+- React Team Excited - they know what they need, start installing libraries.
+
++++
+
+## Holes start appearing
+
++++
+
+## Stage 4 end
+#### The alpha has landed!
+
+![](assets/images/elm-confident.jpg)
+![](assets/images/react-guilty.jpg)
+
+Note:
+(22 min)
+- Elm team feeling confident. Their code feels robust. They don't have as many features as they wanted and some of them are a little rough... 
+- React team feeling guilty. They delivered lots of features but less tests than they should have written and they are aware of some cracks.
+
+---
 
 <!-- INITIAL RELASE AND TESTING (5) - Try it out, Show it off -->
 <!-- js CAUTIOUS Realise they don't need some of the features ANNOYED -->
@@ -327,7 +394,7 @@ Note:
 - elm storytelling
 
 Note:
-(23 min)
+(25 min)
 
 <!-- MAKING CHANGES (6) Tweaks and leads step back a little now the architecture is done -->
 <!-- js CONFIDENT Mess up the css. Can't tweek the 3rd party library. Don't realise they've made a big hole in the wall. ANXIOUS -->
