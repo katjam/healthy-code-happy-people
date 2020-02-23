@@ -21,6 +21,7 @@ Note:
 - not a computer scientist nor engineer - I just like using code to make stuff
 - not a mathematician nor a category theorist... don't need to know it to write reliable User Interfaces
 - I love javascript TICK
+- It would surprise my colleagues - running of js - equality, freedom it creates by having a core of universally supported standard on majority of our devices
 
 ---
 
@@ -39,7 +40,6 @@ Note:
 
 Note:
 (3 min)
-- It would surprise my colleagues - running of js - equality, freedom it creates by having a core of universally supported standard on majority of our devices
 - I don't like reading or writing javascript
 - TICK: You're probably a lot better at writing javascript than I am - because don't do it very much
 - TICK: Might think new tech is fun - but old tech is safer - new to you does not mean new.
@@ -55,7 +55,7 @@ Note:
 IMG![](assets/images/functional-primer.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
 IMG![](assets/images/anti-js.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
 IMG![](assets/images/tools-choices.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
-IMG![](assets/images/true-story.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
+IMG![](assets/images/true-story.jpg)<!-- .elementT class="fragment" data-fragment-index="1" -->
 
 Note:
 (3 min)
@@ -63,7 +63,6 @@ Note:
 - Intended to diss javascript
 - Intended to make anyone feel bad about their tools and choices
 - It's one possible experience
-- A story around a brand new product - but Elm can also be used to add elements to an exisiting js project
 
 +++
 
@@ -81,6 +80,7 @@ Note:
 - Going to talk about how and why I think Elm helps make happier, more productive teams
 - I am going to tell you a little about Elm and why I like it, but this talk is more about how we can help each other write better code and have better conversations
 - It's great that some brain types can process and retain info around complex networks and code connections - but if you are writing inclusive code remember that most of us can't.
+- And if you are new to coding or new to the project, you probabably won;t even be aware that the complexity exists.
 - Humans are awesome. We have imagination... but that can also lead to complication
 
 ---
@@ -97,6 +97,7 @@ Note:
 Note:
 (5 min)
 - A story about 2 teams of people who set off with same goal and took different paths
+- A story around a brand new product - but Elm can also be used to add elements to an exisiting js project
 - After the initial project is scoped and prototyped, we have choices to make
 - What tech stack?
 - Of course includes the frontend - we know react vs. we heard about Elm
@@ -119,7 +120,7 @@ Note:
 Note:
 - React team Excited! They dive in and start scaffolding.
 - The Elm tean is feeling a little guilty, they'll have to find out more.
-- Common exp. Obviously only happens on first Elm project.
+- Common exp. in this room, but Obviously only happens on first Elm project.
 
 +++
 
@@ -172,7 +173,9 @@ Note:
 ```elm
 myFailureTuple = (False, "Oh no!", HomePage)
 mySuccessTuple = (True, "Yay!", NextPage)
+```
 
+```elm
 event = { attendees = 50, name = "nor(DEV):con" }
 
 event.name
@@ -263,6 +266,7 @@ Note:
 - Elm team wander around exploring carefully - they feel excited - learning something new.
 - They've been reassured by the great docs, easy set up and supportive community
 - React team feeling powerful! They've got a clean new project to dive into.
+- This is going to be the best engineered project ever - now they know what they are doing.
 - Not advocate use, but popular way to tear up. Had a hunch about number of lines.
 - TICK TICK - not wrong
 
