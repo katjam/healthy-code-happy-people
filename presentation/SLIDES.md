@@ -199,14 +199,13 @@ Note:
 
 ### Functions!
 
-```elm
-addTwoString : Int -> Int -> String
+<pre><code class="language-elm" data-line-numbers="1|2-3|5|6">addTwoString : Int -> Int -> String
 addTwoString x y =
   toString x ++ "+" ++ toString y ++ "=" ++ toString (x + y)
 
 addTwoString 2 3
 > "2+3=5"
-```
+</code></pre>
 
 Note:
 - The type annotation
