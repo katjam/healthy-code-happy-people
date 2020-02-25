@@ -19,9 +19,9 @@ Note:
 (1 min)
 - Developing software in small teams over decade with Neontribe. Work with non-profits to build digital tools that compliment their over-stretched services
 - I don't identify as a computer scientist or engineer - I just like using code to make stuff
-- not a mathematician nor a category theorist... XXX don't need to know it to write reliable User Interfaces
-- I love javascript TICK
-- It would surprise my colleagues - running of js - equality, freedom it creates by having a universally supported target as standard on majority of our devices
+- not a mathematician nor a category theorist... sometimes I wish I was, but you don't need to know it to write reliable User Interfaces
+- I love javascript
+- It would surprise my colleagues - clarify - universally supported & flexible target as standard on majority of our devices
 
 ---
 
@@ -40,7 +40,7 @@ Note:
 
 Note:
 (3 min)
-- I don't like reading or writing javascript
+- It's also pretty neat how small the initial learning curve is. I don't like reading or writing javascript
 - TICK: You're probably a lot better at writing javascript than I am - because don't do it very much
 - TICK: Might think new tech is fun - but old tech is safer - new to you does not mean new.
 - functional 1930's, ML syntax 1973 - React Elm Typescript Webpack 2012/ 2013 - graphql, redux 2015
@@ -66,20 +66,19 @@ Note:
 
 ## This talk is
 IMG![](assets/images/humans-vs-computers.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
-![](assets/images/react-lang.png)<!-- .element class="fragment" data-fragment-index="2" -->
-![](assets/images/elm-lang.png)<!-- .element class="fragment" data-fragment-index="2" -->
-IMG![](assets/images/human-complication.jpg)<!-- .element class="fragment" data-fragment-index="3" -->
+![](assets/images/react-lang.png)<!-- .element class="fragment inline" data-fragment-index="2" -->
+![](assets/images/elm-lang.png)<!-- .element class="fragment inline" data-fragment-index="3" -->
 
 Note:
 (4 min)
-- Asking you to think about what humans are good and what computers are good at
-- Exposing some of the benefits of functional, static typing
-- Going to make some bad assumptions about react (I don't use it much) XXX
-- I am going to tell you a little about why I like Elm and how I think it helps make happier, more productive teams
-- but this talk is more about how we can help each other write better code and have better conversations
-- It's great that some brain types can process and retain info around complex networks and code connections - but if you are writing inclusive code remember that most of us can't.
+- TICK Asking you to think about what humans are good and what computers are good at
+- Great that some brain types can process and retain info around complex networks and code connections - but if you are writing inclusive code remember that most of us can't.
 - And if you are new to coding or new to the project, you probabably won;t even be aware that the complexity exists.
 - Humans are awesome. We have imagination... but that can also lead to complication particularly during a creative collaboration
+- TICK Probably going to make some wrong assumptions about modern react
+- TICK Because my focus is to tell you little about why I like Elm and how it helps make happier, more productive team 
+- And more improtant, how we can help each other write better code and have better conversations
+- Exposing some of the benefits of functional, static typing along the way
 
 ---
 
@@ -107,15 +106,15 @@ Note:
 
 <!-- .element class="stage-card" -->
 
-## Choose and initialise the stack
+## Choose and init the stack
 
 ![](assets/images/elm-guilty.jpg)
 ![](assets/images/react-excited.jpg)
 
 
 Note:
-- The Elm team is feeling a little guilty, they'll have to find out more.
 - If they were using react Excited! They be able to dive in and start scaffolding.
+- But instead, Elm team is feeling a little guilty, they'll have to do some learning before they get started.
 - Common exp. in this room, but Obviously only happens on first Elm project.
 
 +++
@@ -257,10 +256,10 @@ Note:
 
 Note:
 (10 min)
-- Elm team wander around exploring carefully - they feel excited - learning something new.
-- They've been reassured by the great docs, easy set up and supportive community
-- React team feeling powerful! They've got a clean new project to dive into.
-- This is going to be the best engineered project ever - now they know what they are doing.
+- First milestone: Elm team feel excited - they are exporing carefully and learning something new.
+- Reflect that if React they'd be feeling powerful! With clean new project to dive into.
+- With the confidence that it'd the best engineered project ever - now they know what they are doing.
+- They've been reassured by the great Elm docs, easy set up and supportive community
 - Not advocate use, but popular way to tear up. Had a hunch about number of lines.
 - TICK TICK - not wrong
 
@@ -274,47 +273,139 @@ Note:
 ![](assets/images/react-bored.jpg)
 
 Note:
-- The Elm team is feeling cautious. Many patterns are new to them.
-- React team bored. Install some linting and build tools. 
+- The Team is feeling cautious. Many patterns are new to them. They need to figure out how to render and alter stuff.
+- Reflect that if using react they'd be maybe a little bored, installing some linting and build tools. 
 
 +++
 
-- What is this TEA you speak of?
-- Domain modeling in Elm
+## Html?
 
-![](assets/images/tea.png)
+```elm
+div [ class "list-of-stuff" ]
+[
+  h2 [] [ text "Short list of stuff"],
+  ul []
+    [
+      li [] [ text "Item one"],
+      li [] [ text "Item two"],
+      li [] [ text "Item three"]
+    ]
+]
+```
+![](assets/images/list-of-stuff.png)<!-- .element class="fragment" -->
 
 Note:
-- From tech exeter talk
-- model - your 'state'
-- update function like a react redux reducer - unidirectional dataflow 
-- view - display
-- subscriptions for outside events like time
-- 3 started programmes browser, element, etc
+- We often have artifacts after discovery that tell us what the view should be like
+- It's fair to start there and add stuff to the model and update as you need them
 
 +++
 
-- html?
+## ... and buttons and links
+### it's all just functions
+
+```elm
+button [ onClick DoThing ] [ text "Do thing" ]
+
+a [ href "/my-path" ] [ text "Follow the high road" ]
+```
+
+<span class="fragment">
+
+```js
+React.createElement(
+  "button",
+  { onClick: this.doThing },
+  "Do thing"
+);
+
+React.createElement(
+  "a",
+  { href: "my-path" },
+  "Follow the high road"
+);
+```
+</span>
 
 Note:
-- From tech exeter talk
+- html5 elements fully implemented & is easy to make your own too
+- TICK Much like how jsx works under the hood
 
 +++
+
+## Html?
+### Using elm-format
+
+```elm
+div [ class "list-of-stuff" ]
+    [ h2 [] [ text "Short list of stuff" ]
+    , ul []
+        [ li [] [ text "Item one" ]
+        , li [] [ text "Item two" ]
+        , li [] [ text "Item three" ]
+        ]
+    ]
+```
+
+- elm-format -> One agreed standard
+- Machine can parse with confidence
+- No one forgets the commas
+- Don't need trailing commas to eliminate bad diffs
+
+Note:
+- I lied a little - it looks like this.
+- But elm-format does that for you... so if it takes your muscle memory a while to retrain - don't worry.
+- Like prettier but without the arguments over spaces, tabs and semicolons.
+
++++
+
+## CSS?
 
 - Elm UI? No more css
+- IMG packages
 
 Note:
 (13 min)
 - What does team look like?
-- Already have some css - can plug it in
-- accessibility library
-- define responsive behaviours in a more obvious / logical way
+- Already have some css - can import as a sheet or use sass
+- Can use elm-css which is a little like styled components
+- elm ui define responsive behaviours in a more obvious / logical way in the same place as other code
+- When every thing is functions, your team can be more flexible
+- accessibility package etc
+
++++
+
+### The Elm architecture
+
+![](assets/images/tea.jpg)<!-- .element class="large-img" -->
+
+Note:
+- model - your 'state'
+- update function like a react redux reducer - unidirectional dataflow 
+- view - display
+- subscriptions for outside events like time
+- 3 types of Main progamme supplied by the core Browser package. element, document and application
+
++++
+
+Difference approaching domain model components vs...
+
+- model
+- update
+- view
+
+
+Note:
+- Don't prefer shorter files
+- Don't try to model everything from the beginning, let it grow organically and refector with confidence
+- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
+- Build your modules around types rather than types of functionality.
+- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
 
 +++
 
 <!-- .element class="stage-card" -->
 
-### Initial domain model
+## Initial domain model
 
 ![](assets/images/elm-exhilerated.jpg)
 ![](assets/images/react-huffy.jpg)
@@ -323,8 +414,7 @@ Note:
 (15 min)
 - Elm team exhilerated.
 - They've figured out how the architeture works 
-- React team Huffy they've been arguing a little and coding over each other's work.
-- Both teams have come to an agreed model
+- Remember when React were Huffy they've been arguing a little over how to model things and coding over each other's work.
 
 ---
 
@@ -348,6 +438,7 @@ Note:
 +++
 
 ## What's so great about static typing?
+## What's are custom types?
 
 Note:
 - Elm can make more complex apps safer but it's also a solid foundation for any UI
@@ -464,31 +555,20 @@ Note:
 
 <!-- .element class="stage-card" -->
 
-## Made some tweaks and added a couple features
+## Maintenance
 
-![](assets/images/elm-proud.jpg)
-![](assets/images/react-.jpg)
+![](assets/images/elm-confident.jpg)
+![](assets/images/react-anxious.jpg)
 
 Note:
 (28 min)
 - Elm team feel proud, they added the features and nothing broke
 - React team feel anxious, they've had to patch something at the last minute
-
----
-
-<!-- .element class="stage-card" -->
-
-## Maintenance
-
-![](assets/images/elm-confident.jpg)
-![](assets/images/react-confused.jpg)
-
-Note:
 - The project hasn't been worked on for a while
 - Security patches
 - A new feature request
 - Elm team confident they make the changes and follow the compiler
-- React team feeling confused and not sure how to approach.
+- React team feeling anxious and not sure how to approach.
 - The things they try feel fragile
 
 +++
@@ -527,13 +607,13 @@ IMG![](assets/images/yay-got-this.png)<!-- .element class="fragment" data-fragme
 
 but it should make you feel proud.<!-- .element class="fragment" data-fragment-index="1"-->
 
-
 Note:
 (34 min)
 - Our ultimate goal is reliable apps
 - Your job should not include unneccessary stress
 - If you are writing code that's hard for some of your team to understand, you won't feel proud.
 - We have a finite amount of time. Try to spend it building, testing and designing features; not discovering, discussing and fixing bugs.
+- Hear people say stuff that sounds sensible and repeat it. We ought to stop and think for ourselves?
 
 ---
 
