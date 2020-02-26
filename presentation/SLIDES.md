@@ -106,7 +106,6 @@ Note:
 ![](assets/images/elm-guilty.jpg)
 ![](assets/images/react-excited.jpg)
 
-
 Note:
 - If they were using react Excited! They be able to dive in and start scaffolding.
 - But instead, Elm team is feeling a little guilty, they'll have to do some learning before they get started.
@@ -187,7 +186,7 @@ event.name
 
 Note:
 - Tuples are fixed in number of values but can be mixed types
-- Records are like objects but type safe
+- Records are like objects but type safe & immutable
 - Get value with dot or as a function
 - Update a record - the record and after pipe, the new values
 
@@ -299,7 +298,7 @@ Note:
 
 +++
 
-## ... and buttons and links
+## ... buttons & links
 ### it's all just functions
 
 ```elm
@@ -344,15 +343,14 @@ div [ class "list-of-stuff" ]
     ]
 ```
 
-- elm-format -> One agreed standard
-- Machine can parse with confidence
-- No one forgets the commas
-- Don't need trailing commas to eliminate bad diffs
-
 Note:
 - I lied a little - it looks like this.
 - But elm-format does that for you... so if it takes your muscle memory a while to retrain - don't worry.
 - Like prettier but without the arguments over spaces, tabs and semicolons.
+- One agreed standard
+- Coupled with the static typing, means machine can parse with confidence
+- No one forgets the commas
+- Don't need trailing commas to eliminate bad diffs
 
 +++
 
@@ -441,6 +439,12 @@ Note:
 - Elm team exhilerated.
 - They've figured out how the architeture works 
 - Remember when React were Huffy they've been arguing a little over how to model things and coding over each other's work.
+- There are some useful tips in the elm docs...
+- Don't prefer shorter files
+- Don't try to model everything from the beginning, let it grow organically and refector with confidence
+- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
+- Build your modules around types rather than types of functionality.
+- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
 
 ---
 
@@ -460,21 +464,20 @@ Note:
 +++
 
 ## Refactor!
-Difference approaching domain model components vs...
 
-IMG
+Code goes here...
 
 Note:
-- There are some useful tips in the elm docs...
-- Don't prefer shorter files
-- Don't try to model everything from the beginning, let it grow organically and refector with confidence
-- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
-- Build your modules around types rather than types of functionality.
-- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
+- Let's say you have a farm app
+- Right now all you can do is count the assets
+- Client wants to add another asset type
+- Easy
+- harder
 
 +++
 
 ## What's so great about static typing?
+#### Compiler led development
 
 IMG for other type systems?
 
@@ -487,17 +490,99 @@ Note:
 
 +++
 
-## What's are custom types?
+## What are custom types?
 
+<pre><code class="language-elm" data-line-numbers="1-15|17-21|23-30">module Main exposing (main)
+
+import Browser
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Html.Events exposing (..)
+
+
+main : Program () Model Msg
+main =
+    Browser.document
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = viewDocument
+        }
+
+
+type alias Model =
+    { pigs : Int
+    , corn : Int
+    }
+
+
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( { pigs = 0 , corn = 0 }
+    , Cmd.none
+    )
+
+
+type Msg
+    = BuyPig
+    | HarvestCorn
+    | GrowCorn
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        BuyPig ->
+            ( { model | pigs = model.pigs + 1 }
+            , Cmd.none
+            )
+
+        HarvestCorn ->
+            ( { model | corn = model.corn - 1 }
+            , Cmd.none
+            )
+
+        GrowCorn ->
+            ( { model | corn = model.corn + 1 }
+            , Cmd.none
+            )
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+viewDocument : Model -> Browser.Document Msg
+viewDocument model =
+    { title = "My Farm", body = [ view model ] }
+
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ Html.button [ Html.Events.onClick BuyPig ] [ text "Buy Pig" ]
+        , Html.button [ Html.Events.onClick HarvestCorn ] [ text "Harvest Corn" ]
+        , Html.Button [ Html.Events.onClick GrowCorn ] [ text "Grow Corn" ]
+        ]
+
+</pre></code>
 
 Note:
+- Client wants Food be differnt to animals
 - Elm can make more complex apps safer but it's also a solid foundation for any UI
+- Imports and Main
+- Model types
+- Initialise model
+- Types of updates
+- handle the updates
+- view
 
 +++
 
 <!-- .element class="stage-card" -->
 
-## There will always be challenges, misunderstandings and mistakes
+### There will always be challenges, misunderstandings and mistakes
 
 ![](assets/images/elm-confident.jpg)
 ![](assets/images/react-confident.jpg)
@@ -529,6 +614,7 @@ Note:
 
 Notes:
 - Funcitonal vs OO
+- You can define an object harevstable and not = but with elm's staic types and funcitons the compiler insists that you run through every possible state.
 - React memories of discovering how to manage state and lifecycle methods.
 - Benefits of pure functions
 
@@ -579,32 +665,38 @@ Note:
 (25 min)
 - Testing with users and getting acceptance signed off by client
 - The elm team proud of what they have and all works as expected
-- The React team are annoyed, they realise they don't need some of the features they built after all
-
----
-
-<!-- .element class="stage-card" -->
-
-## Making changes
-
-![](assets/images/elm-anxious.jpg)
-![](assets/images/react-confident.jpg)
-
-Note:
-- Leads can step back now architecture is done
-- Elm team feel anxious about adding a new feature
-- React team confident - but then things start going wrong unexpected effects
+- It may have been a side-effect of moving too fast or not building what they need but they remember when in react, feeling annoyed, when they realised they don't need some of the features they built after all
 
 +++
 
-- Need ports?
-- Code review strategy
-- Dive in and change something (would you let and intern do that?)
-- Alter elm-ui vs css
+## Code review strategy
+
+#### Naming stuff is hard but in Elm it's easy to change
+
+IMG?
 
 Note:
+- Elm structure makes it easy to define Code review guidelines
+- learn a lot from letting new members of team name stuff themselves
+- Declarative means that when framing tasks focus more on what the hting does, not how it does it.
+- Encouraging to name stuff without hesitation, means you know more about what they thinking and how much they understood what the code was doing.
+
+
++++
+
+## The nature of bugs
+
+![](assets/images/white-screen.png)<!-- .element class="fargment" -->
+![](assets/images/compile-error.png)<!-- .element class="fargment" -->
+
+#### Dive in and change something (would you let and intern do that?)
+
+Note:
+- I know I've seen this in production...
 - Types - you can't ask a square for it's circumferance
 - You can't send a person to a view witout a name
+- You can't accidentally harvest a pig
+- If you use elm-ui you can't break the css unwittingly
 - You can't go to production with broken code
 - But you still can go to produciton without enough tests!
 
@@ -617,26 +709,13 @@ Note:
 ![](assets/images/elm-confident.jpg)
 ![](assets/images/react-anxious.jpg)
 
+
 Note:
 (28 min)
-- Elm team feel proud, they added the features and nothing broke
-- React team feel anxious, they've had to patch something at the last minute
 - The project hasn't been worked on for a while
-- Security patches
-- A new feature request
-- Elm team confident they make the changes and follow the compiler
-- React team feeling anxious and not sure how to approach.
-- The things they try feel fragile
-
-+++
-
-- Unbreakable means no stress
-- Project grows, people churn
-- Read code
-- Amend code
-- js libraries moved on - Elm no undeclared breaking changes
-
-Note:
+- When in react, the team felt anxious, often had to patch something at the last minute
+- js libraries moved on - stuff can break with no warning
+- Because of strong and static typing, the elm package ecosystem can enforce semantic versioning
 
 +++
 
@@ -649,7 +728,8 @@ Note:
 
 Note:
 (33 min)
-- Elm team feel proud, even though they weren't original it feels like the thing they added is sound
+- Elm team feel confident they can add new features, follow the compiler and nothing breaks
+- even if they weren't original team it feels like the thing they added is sound
 - React team feel lucky and discuss a complete rewrite if ever they are asked to add another feature
 
 ---
