@@ -21,7 +21,9 @@ Note:
 - I don't identify as a computer scientist or engineer - I just like using code to make stuff
 - not a mathematician nor a category theorist... sometimes I wish I was, but you don't need to know it to write reliable User Interfaces
 - I love javascript
-- It would surprise my colleagues - clarify - universally supported & flexible target as standard on majority of our devices
+- surprise my colleagues - clarify - I don't like reading or writing javascript
+- universally supported & flexible target as standard on majority of our devices
+- It's also pretty neat how small the initial learning curve is.
 
 ---
 
@@ -31,22 +33,22 @@ Note:
 
 **You might think**<!-- .element class="fragment" data-fragment-index="2"-->
 - New is fun & old is safe<!-- .element class="fragment" data-fragment-index="2"-->
-- Popular is reliable & niche is fragile<!-- .element class="fragment" data-fragment-index="2"-->
+- Popular is reliable & niche is fragile<!-- .element class="fragment" data-fragment-index="3"-->
 
-**You probably value**<!-- .element class="fragment" data-fragment-index="3"-->
-- Safety & efficiency<!-- .element class="fragment" data-fragment-index="3"-->
-- Client trust<!-- .element class="fragment" data-fragment-index="3"-->
-- Un-stressful collaboration<!-- .element class="fragment" data-fragment-index="3"-->
+**You probably value**<!-- .element class="fragment" data-fragment-index="4"-->
+- Safety & efficiency<!-- .element class="fragment" data-fragment-index="4"-->
+- Client trust<!-- .element class="fragment" data-fragment-index="5"-->
+- Un-stressful collaboration<!-- .element class="fragment" data-fragment-index="6"-->
 
 Note:
 (3 min)
-- It's also pretty neat how small the initial learning curve is. I don't like reading or writing javascript
-- TICK: You're probably a lot better at writing javascript than I am - because don't do it very much
+- You're probably a lot better at writing javascript than I am - because don't do it very much
 - TICK: Might think new tech is fun - but old tech is safer - new to you does not mean new.
 - functional 1930's, ML syntax 1973 - React Elm Typescript Webpack 2012/ 2013 - graphql, redux 2015
 - You might think popular tech is reliable and niche tech is fragile - carefully engineered specialist equipt
-- TICK: Like me, you proably want to write reliable software that you can be proud of
-- and feel confident when others collaboate with you on your code
+- TICK: Like me, you proably want to write reliable software 
+- TICK that you can be proud of
+- TICK and feel confident when others collaboate with you on your code
 
 +++
 
@@ -65,19 +67,15 @@ Note:
 +++
 
 ## This talk is
-IMG![](assets/images/humans-vs-computers.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
-![](assets/images/react-lang.png)<!-- .element class="fragment inline" data-fragment-index="2" -->
+![](assets/images/react-lang.png)<!-- .element class="fragment inline" data-fragment-index="1" -->
+IMG![](assets/images/humans-vs-computers.jpg)<!-- .element class="fragment" data-fragment-index="2" -->
 ![](assets/images/elm-lang.png)<!-- .element class="fragment inline" data-fragment-index="3" -->
 
 Note:
 (4 min)
-- TICK Asking you to think about what humans are good and what computers are good at
-- Great that some brain types can process and retain info around complex networks and code connections - but if you are writing inclusive code remember that most of us can't.
-- And if you are new to coding or new to the project, you probabably won;t even be aware that the complexity exists.
-- Humans are awesome. We have imagination... but that can also lead to complication particularly during a creative collaboration
-- TICK Probably going to make some wrong assumptions about modern react
-- TICK Because my focus is to tell you little about why I like Elm and how it helps make happier, more productive team 
-- And more improtant, how we can help each other write better code and have better conversations
+- TICK Probably make wrong assumptions about modern react
+- TICK OK because less about tech, more asking think about humans & computers good at. Great some brain types  process & retain info around complex networks & code connections - but if you are writing inclusive code remember most of us can't. And if new to coding or to the project, you probabably won't be aware that the complexity exists. Humans are awesome. We have imagination... but lead to complication particularly during creative collab
+- TICK my focus is to tell you little about why I like Elm and how it helps make happier, more productive team. But more important, how we can help each other write better code and have better conversations
 - Exposing some of the benefits of functional, static typing along the way
 
 ---
@@ -93,13 +91,10 @@ Note:
 
 Note:
 (5 min)
-- A story about a brave team of people who set off down an unknown path. As they go, they reflect on experience of an earlier react project
-- A story around a brand new product cycle - but Elm can also be used to add elements to an exisiting js project
-- After the initial project is scoped and prototyped, we have choices to make
-- What tech stack? Of course includes the frontend - we know react vs. we heard about Elm
-- also typescript, angular, reason ml, etc... there are many
+- Story about brave team who set off down an unknown path. Reflect on experience of react projects. New product cycle, but Elm ca also add elements to an exisiting js project
+- Tech stack frontend - we know react vs. we heard about Elm (also typescript, angular, reason ml.
 - In this story, our team intrigued promises of Elm
-- Elm is a language based on functional programming principles that compiles to Javascript and defines an architecture that makes rapid prototyping, evolving and scaling web apps and maintaining a single source of truth easy.
+- Elm is a language based on functional programming principles that compiles to Javascript & defines an architecture that makes rapid prototyping, evolving & scaling web apps and maintaining a single source of truth easy.
 - It's ecosystem is steadily growing & as advertised is a delightful language for reliable webapps, with friendly error messages and no runtime errors, is also for data vizualisation, for 3D graphics
 
 +++
@@ -134,6 +129,8 @@ Note:
 ### Strings, Math & Lists
 
 ```elm
+-- A short comment (excited??)
+
 "Hello " ++ "Norwich!"
 > "Hello Norwich!" : String
 ```
@@ -157,10 +154,10 @@ List.length names
 ```
 
 Note:
-- syntax confusing - Ironically, exp devs seem to have more trouble reading Elm than beginners
 - demo that this is not a lisp based syntax
+- in a REPL - so > is result of running line above
+- syntax confusing - Ironically, exp devs seem to have more trouble reading Elm than beginners
 - uses comments, variables, functions, math and logic
-- in a REPL XXX
 - Concatenate strings with `++`
 - Division can be floating point / or integer //
 - Lists must contain items of same type
@@ -192,7 +189,7 @@ Note:
 - Tuples are fixed in number of values but can be mixed types
 - Records are like objects but type safe
 - Get value with dot or as a function
-- Update a record XXX 
+- Update a record - the record and after pipe, the new values
 
 +++
 
@@ -215,6 +212,7 @@ Note:
 - The function definition
 - Call the function
 - The result is a string
+- might seem onerous doing that type wrangling but I promise worth it
 
 +++
 
@@ -241,6 +239,7 @@ Note:
 - if then else has 2 branches determined by boolean
 - case statement more than 2 possibilities
 - Note that every branch of the case must return the same type
+- show later awesome the benefits
 
 +++
 
@@ -256,11 +255,11 @@ Note:
 
 Note:
 (10 min)
-- First milestone: Elm team feel excited - they are exporing carefully and learning something new.
-- Reflect that if React they'd be feeling powerful! With clean new project to dive into.
-- With the confidence that it'd the best engineered project ever - now they know what they are doing.
-- They've been reassured by the great Elm docs, easy set up and supportive community
-- Not advocate use, but popular way to tear up. Had a hunch about number of lines.
+- First milestone: Team feel excited about Elm - exploring carefully and learning something new.
+- Though also reflect that if React feeling powerful! With clean new project to dive into.
+- and the confidence that it'd the best engineered project ever - now they know what they are doing.
+- But they've been reassured by the great Elm docs, easy set up and supportive community
+- Curiousity... Not advocate use, but popular way to tear up. Had a hunch about number of lines.
 - TICK TICK - not wrong
 
 ---
@@ -332,8 +331,7 @@ Note:
 
 +++
 
-## Html?
-### Using elm-format
+## Using elm-format
 
 ```elm
 div [ class "list-of-stuff" ]
@@ -380,26 +378,54 @@ Note:
 
 Note:
 - model - your 'state'
-- update function like a react redux reducer - unidirectional dataflow 
+- messages (like redux actions)
+- update function like a redux reducer - unidirectional dataflow 
 - view - display
 - subscriptions for outside events like time
 - 3 types of Main progamme supplied by the core Browser package. element, document and application
 
 +++
 
-Difference approaching domain model components vs...
+## State machine code in brief
 
-- model
-- update
-- view
+Model / State
 
+```elm
+type alias Model =
+    { lightsOn : Boolean }
+
+initialModel =
+    { lightsOn : True }
+```
+
+```js
+const initialState = {
+  lightsOn: false
+}
+```
+
+Message / Action
+
+```elm
+```
+
+```js
+```
+
+Update / Reducer
+
+```elm
+```
+
+```js
+```
 
 Note:
-- Don't prefer shorter files
-- Don't try to model everything from the beginning, let it grow organically and refector with confidence
-- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
-- Build your modules around types rather than types of functionality.
-- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
+
+- Already looked at the view
+- Here's a quick look at the state machine
+- The biggest differences between the 2 is Elm's types and the fact that the wiring is all there with Elm
+- With Redux you have to connect the components to the store and the actions/ reducers
 
 +++
 
@@ -427,18 +453,42 @@ Note:
 
 Note:
 (17 min)
-- Reach limits of the initial model
+- Eventually always reach limits of the initial model
 - Elm Team confident - they meet a dead end but they trust the compiler
 - React Team annoyed - they meet a dead end and fear a refactor
 
 +++
 
-## Refactor time!
+## Refactor!
+Difference approaching domain model components vs...
+
+IMG
+
+Note:
+- There are some useful tips in the elm docs...
+- Don't prefer shorter files
+- Don't try to model everything from the beginning, let it grow organically and refector with confidence
+- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
+- Build your modules around types rather than types of functionality.
+- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
 
 +++
 
 ## What's so great about static typing?
+
+IMG for other type systems?
+
+Note:
+- There are some really great articles and talks and podcasts about type systems so I go go in to details
+- Only to say that probably if you've used types and found them to be more trouble than worth
+- The you haven't tried types the way they are baked in to Elm
+- A few important points - there is no Any type - all of your code is typed, no sneaky .ts file that is really .js
+- Never get an error that says you are using the wonr type unless you are
+
++++
+
 ## What's are custom types?
+
 
 Note:
 - Elm can make more complex apps safer but it's also a solid foundation for any UI
@@ -478,6 +528,7 @@ Note:
 ## Holes start appearing
 
 Notes:
+- Funcitonal vs OO
 - React memories of discovering how to manage state and lifecycle methods.
 - Benefits of pure functions
 
@@ -550,6 +601,12 @@ Note:
 - Code review strategy
 - Dive in and change something (would you let and intern do that?)
 - Alter elm-ui vs css
+
+Note:
+- Types - you can't ask a square for it's circumferance
+- You can't send a person to a view witout a name
+- You can't go to production with broken code
+- But you still can go to produciton without enough tests!
 
 +++
 
