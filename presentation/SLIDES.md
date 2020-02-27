@@ -28,7 +28,7 @@ Note:
 
 ## Assumptions
 
-**Your skills & knowledge** are not the same as mine
+Your skills & knowledge - not the same as mine
 
 **You might think**<!-- .element class="fragment" data-fragment-index="2"-->
 - New is fun & old is safe<!-- .element class="fragment" data-fragment-index="2"-->
@@ -66,8 +66,8 @@ Note:
 +++
 
 ## This talk is
-![](assets/images/computers.png)<!-- .element class="fragment inline" data-fragment-index="1" -->
-![](assets/images/humans.png)<!-- .element class="fragment inline" data-fragment-index="2" -->
+![](assets/images/computers.jpg)<!-- .element class="fragment" data-fragment-index="1" -->
+![](assets/images/humans.jpg)<!-- .element class="fragment" data-fragment-index="2" -->
 
 Note:
 (4 min)
@@ -269,38 +269,6 @@ Note:
 
 +++
 
-## Modules
-
-```elm
-module MyModule exposing (TypesINeed(WithConstructors), functionINeed)
-```
-
-```elm
-import MyModule exposing (..)
-
-functionINeed
-```
-
-```elm
-import MyModule exposing (functionINeed)
-
-funcitonINeed
-```
-
-```elm
-import MyModule
-
-MyModule.functionINeed
-```
-
-Note:
-- define API of your module with export
-- import everything explicitly
-- import only what you need
-- import only the module and invoke with full notation (considered best)
-
-+++
-
 <!-- .element class="stage-card" -->
 
 ## Project Boilerplate
@@ -433,7 +401,7 @@ Note:
 
 ## CSS?
 
-![](assets/images/elm-ui.png)
+![](assets/images/elm-ui.png)<!-- .element class="large-img" -->
 
 Note:
 (13 min)
@@ -533,6 +501,10 @@ Note:
 ![](assets/images/elm-exhilerated.jpg)
 ![](assets/images/react-huffy.jpg)
 
+![](assets/images/lightOff.png)
+
+![](assets/images/lightOn.png)
+
 Note:
 (15 min)
 - Elm team exhilerated.Figured out how the architeture works 
@@ -562,6 +534,7 @@ Note:
 type alias Model =
     { lightsOn : Bool
     }
+```
 
 to
 
@@ -581,7 +554,7 @@ Note:
 ## What's so great about static typing?
 #### Compiler led development <!-- .element class="fragment"-->
 
-![](assets/images/error-dimmer.png) <!-- .element class="fragment"-->
+![](assets/images/error-dimmer.png) <!-- .element class="fragment large-img"-->
 
 Note:
 - There are some really great articles and talks and podcasts about type systems so I go go in to details
@@ -629,11 +602,11 @@ Note:
 ## Humans are helpful
 
 ```elm
-Html.button [ Html.Events.onClick TurnedUp ] [ text "Turn up" ]
-Html.button [ Html.Events.onClick TurnedDown ] [ text "Turn down" ]
+button [ Html.Events.onClick TurnedUp ] [ text "Turn up" ]
+button [ Html.Events.onClick TurnedDown ] [ text "Turn down" ]
 ```
 
-![](assets/images/dimmer-controls.png)<!-- .element class="fragment" -->
+![](assets/images/dimmer-controls.png)<!-- .element class="fragment large-img" -->
 
 Note:
 - This time they start with the interface, changing 2 lines
@@ -641,7 +614,7 @@ Note:
 
 +++
 
-## ... and so are compilers
+## ... and compilers are helpful too!
 
 ```elm
 type Msg
@@ -658,12 +631,17 @@ update msg model =
             )
 ```
 
-![](assets/images/missing-case.png)<!-- .element class="fragment" -->
-
 Note:
 - The team add the new update message and alter the flicked switch one to be more accurate turned up
 - But there is a problem
-- TICK but not one they can't handle
+- TICK 
+
++++
+
+![](assets/images/missing-case.png)<!-- .element class="large-img" -->
+
+Note:
+- but not one they can't handle
 - And the broken button never made it to production
 
 ---
@@ -674,18 +652,19 @@ Note:
 
 ![](assets/images/elm-confident.jpg)
 ![](assets/images/react-confident.jpg)
-![](assets/images/and-colours.png)<!-- .element class="wonky20" -->
+![](assets/images/and-colours.png)<!-- .element class="fragment" -->
 
 Note:
-(18 min)
-- The 2 teams meet and find they've had same challenges
-- Elm team still confident. They can see they have good patterns.
-- React team confident. They started to trust each other and have a new, more robust model.
+(30 min)
+- On reflection the team realise same challenges in Elm & react
+- And they feel confident. They can see they have good patterns.
+- They feel more confident about react too. They started to trust each other and have a new, more robust model to base their conversations around.
 - Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
+- TICK Here we go again.
 
 +++
 
-## What are custom types?
+## Custom types
 
 ```elm
 type Colour
@@ -733,38 +712,24 @@ Note:
 ![](assets/images/react-guilty.jpg)
 
 Note:
-(22 min)
-- Elm team feeling confident. Their code feels robust. They don't have as many features as they wanted and some of them are a little rough... 
-- React team feeling guilty. They delivered lots of features but less tests than they should have written and they are aware of some cracks. They may also have over zealously imported some libraries that they are only using one feature of.
+(33 min)
+- The eam feeling confident. Their code feels robust. They don't have as many features as they wanted and some of them are a little rough... 
+- They htink back to react maybe feeling guilty. They delivered lots of features but less tests than they should have written and they are aware of some cracks. They may also have over zealously imported some libraries that they are only using one feature of.
 
 ---
 
 <!-- .element class="stage-card" -->
 
 ## Initial release
+### Show off the work
 
 ![](assets/images/elm-proud.jpg)
 ![](assets/images/react-cautious.jpg)
 
 Note:
-- The Elm team feeling proud and confident to go through the features & code with client
-- The React team are feeling cautious - they realise some of their features are fragile
+- The team feeling proud and confident to go through the features & code with client
+- On previous projects, team might be feeling cautious - they realise some of their features are fragile
 - It may have been a side-effect of moving too fast or not building what they need but they remember when in react, feeling annoyed, when they realised they don't need some of the features they built after all
-
-+++
-
-## Code review strategy
-
-#### Naming stuff is hard but in Elm it's easy to change
-
-IMG?
-
-Note:
-- Elm structure makes it easy to define Code review guidelines
-- learn a lot from letting new members of team name stuff themselves
-- Declarative means that when framing tasks focus more on what the hting does, not how it does it.
-- Encouraging to name stuff without hesitation, means you know more about what they thinking and how much they understood what the code was doing.
-
 
 +++
 
@@ -773,7 +738,8 @@ Note:
 ![](assets/images/white-screen.png)<!-- .element class="fargment" -->
 ![](assets/images/compile-error.png)<!-- .element class="fargment" -->
 
-#### Dive in and change something (would you let and intern do that?)
+#### Dive in and change something
+#### (would you let and intern do that?)
 
 Note:
 - I know I've seen this in production...
@@ -795,17 +761,10 @@ Note:
 
 
 Note:
-(28 min)
 - The project hasn't been worked on for a while
 - When in react, the team felt anxious, often had to patch something at the last minute
 - js libraries moved on - stuff can break with no warning
 - Because of strong and static typing, the elm package ecosystem can enforce semantic versioning
-- MAYBE DITCH There are some useful tips in the elm docs... Don't prefer shorter files
-- Don't try to model everything from the beginning, let it grow organically and refector with confidence
-- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
-- Build your modules around types rather than types of functionality.
-- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
-
 
 +++
 
@@ -817,7 +776,7 @@ Note:
 ![](assets/images/react-lucky.jpg)
 
 Note:
-(33 min)
+(35 min)
 - Elm team feel confident they can add new features, follow the compiler and nothing breaks
 - even if they weren't original team it feels like the thing they added is sound
 - React team feel lucky and discuss a complete rewrite if ever they are asked to add another feature
@@ -826,21 +785,22 @@ Note:
 
 <!-- CONCLUDE AND SUMMARY -->
 
-## Now what?
-
 If programming is your job, it isn't supposed to be fun...
 
-IMG![](assets/images/yay-got-this.png)<!-- .element class="fragment" data-fragment-index="1"-->
+![](assets/images/cards1.jpg)<!-- .element class="fragment inline" data-fragment-index="1"-->
+![](assets/images/cards3.jpg)<!-- .element class="fragment inline" data-fragment-index="2"-->
+![](assets/images/cards2.jpg)<!-- .element class="fragment inline" data-fragment-index="3"-->
+![](assets/images/cards-down.jpg)<!-- .element class="fragment" data-fragment-index="4"-->
 
-but it should make you feel proud.<!-- .element class="fragment" data-fragment-index="1"-->
+but it should make you feel proud.<!-- .element class="fragment" data-fragment-index="5"-->
 
 Note:
-(34 min)
+(38 min)
 - Our ultimate goal is reliable apps
 - Your job should not include unneccessary stress
+- Wanted ot make an impressive house of cards - realise scaffolding would have helped
 - If you are writing code that's hard for some of your team to understand, you won't feel proud.
 - We have a finite amount of time. Try to spend it building, testing and designing features; not discovering, discussing and fixing bugs.
-- Hear people say stuff that sounds sensible and repeat it. We ought to stop and think for ourselves?
 
 ---
 
@@ -857,6 +817,6 @@ Note:
 - &nbsp;elmlang: katjam<!-- .element class="icon-slack" -->
 
 Note:
-(35 min)
+(40 min)
 - Support of Neontribe and the Elm community
 - Come find me later with questions or get in touch
