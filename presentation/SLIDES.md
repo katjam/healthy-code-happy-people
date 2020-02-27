@@ -66,14 +66,13 @@ Note:
 +++
 
 ## This talk is
-![](assets/images/react-lang.png)<!-- .element class="fragment inline" data-fragment-index="1" -->
-IMG![](assets/images/humans-vs-computers.jpg)<!-- .element class="fragment" data-fragment-index="2" -->
-![](assets/images/elm-lang.png)<!-- .element class="fragment inline" data-fragment-index="3" -->
+![](assets/images/computers.png)<!-- .element class="fragment inline" data-fragment-index="1" -->
+![](assets/images/humans.png)<!-- .element class="fragment inline" data-fragment-index="2" -->
 
 Note:
 (4 min)
-- TICK Probably going make wrong assumptions about modern react
-- TICK OK because less about tech, more asking think about humans & computers good at. Great some brains process & retain info around complex networks & code connections - but if you are writing inclusive code remember most of us can't. And if new to coding or to the project, you probabably won't be aware that the complexity exists. Humans are awesome. We have imagination... but lead to complication particularly during creative collab
+- Probably going make wrong assumptions about modern react
+- TICK OK because less about tech, more asking think about humans & computers good at. Great some brains process & retain info around complex networks & code connections - but if you are writing inclusive code remember most of us can't. And if new to coding or to the project, you probabably won't be aware that the complexity exists. TICK Humans are awesome. We have imagination... but lead to complication particularly during creative collab
 - TICK my focus is to tell you little about why I like Elm and how it helps make happier, more productive team. But more important, how we can help each other write better code and have better conversations
 - Exposing some of the benefits of functional, static typing along the way
 
@@ -265,10 +264,10 @@ aFunctionWithManySteps data =
         |> FinallyThisFunction
 ```
 
-
 Note:
 - Elm has a convenient syntax that helps turn the function calls inside out if it feels more natural for you
 
++++
 
 ## Modules
 
@@ -434,8 +433,7 @@ Note:
 
 ## CSS?
 
-- Elm UI? No more css
-- IMG packages
+![](assets/images/elm-ui.png)
 
 Note:
 (13 min)
@@ -456,7 +454,7 @@ Note:
 - model - your 'state'
 - messages (like redux actions)
 - update function like a redux reducer - unidirectional dataflow 
-- view - display - one key difference to react / redux the team notice right away is one view function that has access to the model & messages without extar wiring
+- view - display
 - user provides input in form of intreaction with UI elements that send messgaes to the update function
 - subscriptions for outside events like time
 - 3 types of Main progamme supplied by the core Browser package. element, document and application
@@ -465,7 +463,7 @@ Note:
 
 ## State machine code in brief
 
-Model / State
+### Model / State
 
 ```elm
 type alias Model =
@@ -481,7 +479,13 @@ const initialState = {
 }
 ```
 
-Message / Action
+Note:
+- Just looked at the view in Elm.
+- Here's a quick look at the state machine
+
++++
+
+### Message / Action
 
 ```elm
 type Msg = FlickedSwitch
@@ -493,7 +497,9 @@ export const FLICKEDSWITCH = 'FLICKEDSWITCH'
 export const flickedSwitch = () => ({ type: FLICKEDSWITCH })
 ```
 
-Update / Reducer
++++
+
+### Update / Reducer
 
 ```elm
 update msg model =
@@ -514,9 +520,6 @@ export function myReducer (state = inititalState, action) {
 ```
 
 Note:
-
-- Just looked at the view in Elm.
-- Here's a quick look at the state machine
 - The biggest differences between the 2 is Elm's types and the fact that the wiring is all there with Elm
 - With Redux you have to connect the components to the store and the actions/ reducers
 - and do a little more keeping track of which state is new and old / current initial
@@ -532,15 +535,8 @@ Note:
 
 Note:
 (15 min)
-- Elm team exhilerated.
-- They've figured out how the architeture works 
-- Remember when React were Huffy they've been arguing a little over how to model things and coding over each other's work.
-- There are some useful tips in the elm docs...
-- Don't prefer shorter files
-- Don't try to model everything from the beginning, let it grow organically and refector with confidence
-- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
-- Build your modules around types rather than types of functionality.
-- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
+- Elm team exhilerated.Figured out how the architeture works 
+- Remember when React were Huffy they've been arguing a little over how to model things & coding over each other's work.
 
 ---
 
@@ -579,6 +575,7 @@ Note:
 - They think thier model in terms of what it needs to display to the user
 - And what states it can be in
 - So we change our lightsOn model to include brightness value
+
 +++
 
 ## What's so great about static typing?
@@ -803,6 +800,12 @@ Note:
 - When in react, the team felt anxious, often had to patch something at the last minute
 - js libraries moved on - stuff can break with no warning
 - Because of strong and static typing, the elm package ecosystem can enforce semantic versioning
+- MAYBE DITCH There are some useful tips in the elm docs... Don't prefer shorter files
+- Don't try to model everything from the beginning, let it grow organically and refector with confidence
+- Assume everything is unique until it isn't. Often we mistake similar for the same in order to save effort, but it often is a false economy.
+- Build your modules around types rather than types of functionality.
+- Don't think in terms of visual components - it's tempting to break stuff down into - local state and methods, but that's the object trap and it adds a layer of management complexity.
+
 
 +++
 
