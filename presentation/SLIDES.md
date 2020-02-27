@@ -20,8 +20,7 @@ Note:
 - Developing software in small teams over decade with Neontribe. Work with non-profits to build digital tools that compliment their over-stretched services
 - I don't identify as a computer scientist or engineer - I just like using code to make stuff
 - not a mathematician nor a category theorist... sometimes I wish I was, but you don't need to know it to write reliable User Interfaces
-- I love javascript
-- surprise my colleagues - clarify - I don't like reading or writing javascript
+- I love javascript - surprise my colleagues, clarify - I don't like reading or writing javascript
 - universally supported & flexible target as standard on majority of our devices
 - It's also pretty neat how small the initial learning curve is.
 
@@ -73,8 +72,8 @@ IMG![](assets/images/humans-vs-computers.jpg)<!-- .element class="fragment" data
 
 Note:
 (4 min)
-- TICK Probably make wrong assumptions about modern react
-- TICK OK because less about tech, more asking think about humans & computers good at. Great some brain types  process & retain info around complex networks & code connections - but if you are writing inclusive code remember most of us can't. And if new to coding or to the project, you probabably won't be aware that the complexity exists. Humans are awesome. We have imagination... but lead to complication particularly during creative collab
+- TICK Probably going make wrong assumptions about modern react
+- TICK OK because less about tech, more asking think about humans & computers good at. Great some brains process & retain info around complex networks & code connections - but if you are writing inclusive code remember most of us can't. And if new to coding or to the project, you probabably won't be aware that the complexity exists. Humans are awesome. We have imagination... but lead to complication particularly during creative collab
 - TICK my focus is to tell you little about why I like Elm and how it helps make happier, more productive team. But more important, how we can help each other write better code and have better conversations
 - Exposing some of the benefits of functional, static typing along the way
 
@@ -91,7 +90,7 @@ Note:
 
 Note:
 (5 min)
-- Story about brave team who set off down an unknown path. Reflect on experience of react projects. New product cycle, but Elm ca also add elements to an exisiting js project
+- Story about brave team who set off down an unknown path. Reflect on experience of react projects. New product cycle, but Elm can also add elements to an exisiting js project
 - Tech stack frontend - we know react vs. we heard about Elm (also typescript, angular, reason ml.
 - In this story, our team intrigued promises of Elm
 - Elm is a language based on functional programming principles that compiles to Javascript & defines an architecture that makes rapid prototyping, evolving & scaling web apps and maintaining a single source of truth easy.
@@ -188,7 +187,9 @@ Note:
 - Tuples are fixed in number of values but can be mixed types
 - Records are like objects but type safe & immutable
 - Get value with dot or as a function
-- Update a record - the record and after pipe, the new values
+- Update a record - the record and after pipe, the new values (one or more at a time)
+- As they are immutable, this retuns a new record, it does not change the old old one.
+- Remember, in Elm everything is fnuctions - take an input and return an output
 
 +++
 
@@ -242,6 +243,10 @@ Note:
 
 +++
 
+### Piping
+
++++
+
 <!-- .element class="stage-card" -->
 
 ## Project Boilerplate
@@ -271,6 +276,7 @@ Note:
 ![](assets/images/react-bored.jpg)
 
 Note:
+- Now comes time to start making things
 - The Team is feeling cautious. Many patterns are new to them. They need to figure out how to render and alter stuff.
 - Reflect that if using react they'd be maybe a little bored, installing some linting and build tools. 
 
@@ -281,20 +287,22 @@ Note:
 ```elm
 div [ class "list-of-stuff" ]
 [
-  h2 [] [ text "Short list of stuff"],
+  h2 [] [ text "Short list of stuff" ],
   ul []
     [
-      li [] [ text "Item one"],
-      li [] [ text "Item two"],
-      li [] [ text "Item three"]
+      li [] [ text "Item one" ],
+      li [] [ text "Item two" ],
+      li [] [ text "Item three" ]
     ]
 ]
 ```
 ![](assets/images/list-of-stuff.png)<!-- .element class="fragment" -->
 
 Note:
-- We often have artifacts after discovery that tell us what the view should be like
+- Following discovery, scopnig and prototyping, they have artifacts that tell them what the view should include and how it is laid out
 - It's fair to start there and add stuff to the model and update as you need them
+- So let's take a look at some View code. Any guesses on the output?
+- TICK - hopefully is as you imagined
 
 +++
 
@@ -326,6 +334,7 @@ React.createElement(
 
 Note:
 - html5 elements fully implemented & is easy to make your own too
+- they are functions that take 2 arguments, a list of attributes and a list of html elements
 - TICK Much like how jsx works under the hood
 
 +++
@@ -334,6 +343,20 @@ Note:
 
 ```elm
 div [ class "list-of-stuff" ]
+[
+  h2 [] [ text "Short list of stuff" ],
+  ul []
+    [
+      li [] [ text "Item one" ],
+      li [] [ text "Item two" ],
+      li [] [ text "Item three" ]
+    ]
+]
+```
+
+
+<pre><code class="language-elm fragment">
+div [ class "list-of-stuff" ]
     [ h2 [] [ text "Short list of stuff" ]
     , ul []
         [ li [] [ text "Item one" ]
@@ -341,16 +364,16 @@ div [ class "list-of-stuff" ]
         , li [] [ text "Item three" ]
         ]
     ]
-```
+</code></pre>
 
 Note:
-- I lied a little - it looks like this.
+- I lied a little - it looks like this. TICK
 - But elm-format does that for you... so if it takes your muscle memory a while to retrain - don't worry.
 - Like prettier but without the arguments over spaces, tabs and semicolons.
 - One agreed standard
-- Coupled with the static typing, means machine can parse with confidence
-- No one forgets the commas
+- Coupled with the static typing, means compiler can parse with confidence
 - Don't need trailing commas to eliminate bad diffs
+- No one forgets the commas
 
 +++
 
@@ -378,7 +401,8 @@ Note:
 - model - your 'state'
 - messages (like redux actions)
 - update function like a redux reducer - unidirectional dataflow 
-- view - display
+- view - display - one key difference to react / redux the team notice right away is one view function that has access to the model & messages without extar wiring
+- user provides input in form of intreaction with UI elements that send messgaes to the update function
 - subscriptions for outside events like time
 - 3 types of Main progamme supplied by the core Browser package. element, document and application
 
@@ -390,7 +414,7 @@ Model / State
 
 ```elm
 type alias Model =
-    { lightsOn : Boolean }
+    { lightsOn : Bool }
 
 initialModel =
     { lightsOn : True }
@@ -405,25 +429,42 @@ const initialState = {
 Message / Action
 
 ```elm
+type Msg = FlickedSwitch
 ```
 
 ```js
+export const FLICKEDSWITCH = 'FLICKEDSWITCH'
+
+export const flickedSwitch = () => ({ type: FLICKEDSWITCH })
 ```
 
 Update / Reducer
 
 ```elm
+update msg model =
+    case msg of
+        FlickedSwitch =>
+            { model | lightsOn = not(model.lightsOn) }
 ```
 
 ```js
+export function myReducer (state = inititalState, action) {
+  switch (action.type) {
+    case FLICKEDSWITCH:
+      return { lightsOn: !state.lightsOn }
+    default;
+      return state
+  }
+}
 ```
 
 Note:
 
-- Already looked at the view
+- Just looked at the view in Elm.
 - Here's a quick look at the state machine
 - The biggest differences between the 2 is Elm's types and the fact that the wiring is all there with Elm
 - With Redux you have to connect the components to the store and the actions/ reducers
+- and do a little more keeping track of which state is new and old / current initial
 
 +++
 
@@ -454,6 +495,7 @@ Note:
 
 ![](assets/images/elm-confident.jpg)
 ![](assets/images/react-annoyed.jpg)
+![](assets/images/dimmable.png)<!-- .element class="wonky30" -->
 
 Note:
 (17 min)
@@ -465,120 +507,114 @@ Note:
 
 ## Refactor!
 
-Code goes here...
+```elm
+type alias Model =
+    { lightsOn : Bool
+    }
+
+to
+
+```elm
+type alias Model =
+    { light : Int
+    }
+```
 
 Note:
-- Let's say you have a farm app
-- Right now all you can do is count the assets
-- Client wants to add another asset type
-- Easy
-- harder
-
+- They think thier model in terms of what it needs to display to the user
+- And what states it can be in
+- So we change our lightsOn model to include brightness value
 +++
 
 ## What's so great about static typing?
-#### Compiler led development
+#### Compiler led development <!-- .element class="fragment"-->
 
-IMG for other type systems?
+![](assets/images/error-dimmer.png) <!-- .element class="fragment"-->
 
 Note:
 - There are some really great articles and talks and podcasts about type systems so I go go in to details
 - Only to say that probably if you've used types and found them to be more trouble than worth
-- The you haven't tried types the way they are baked in to Elm
+- TICK The you haven't tried types the way they are baked in to Elm
 - A few important points - there is no Any type - all of your code is typed, no sneaky .ts file that is really .js
-- Never get an error that says you are using the wonr type unless you are
+- Never get an error that says you are using the wrong type unless you are
+- TICK When they changed their light model, the team got helpful errors EXPLAIN
 
 +++
 
-## What are custom types?
+## Not all automated
 
-<pre><code class="language-elm" data-line-numbers="1-15|17-21|23-30">module Main exposing (main)
-
-import Browser
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
-
-
-main : Program () Model Msg
-main =
-    Browser.document
-        { init = init
-        , update = update
-        , subscriptions = subscriptions
-        , view = viewDocument
-        }
-
-
-type alias Model =
-    { pigs : Int
-    , corn : Int
-    }
-
-
-init : () -> ( Model, Cmd Msg )
+```elm
 init _ =
-    ( { pigs = 0 , corn = 0 }
+    ( { light = 0
+      }
     , Cmd.none
     )
+```
 
+```elm
+FlickedSwitch ->
+    ( { model | light = model.light + 10 }
+    , Cmd.none
+    )
+```
 
+```elm
+if model.light > 20 then
+    text "Have light!"
+```
+
+![](assets/images/lightOff.png)
+![](assets/images/lightOn.png)
+
+Note:
+- Don't worry, even with Elm the team realised they had a purpose
+- Their brains with imagination and ability to include context in decision making process is important
+- They fixed the compiler errors with 3 line changes
+- But they needed to to a bit more thinking for the feature to make sense
+
++++
+
+## Humans are helpful
+
+```elm
+Html.button [ Html.Events.onClick TurnedUp ] [ text "Turn up" ]
+Html.button [ Html.Events.onClick TurnedDown ] [ text "Turn down" ]
+```
+
+![](assets/images/dimmer-controls.png)<!-- .element class="fragment" -->
+
+Note:
+- This time they start with the interface, changing 2 lines
+- And follow the compiler again
+
++++
+
+## ... and so are compilers
+
+```elm
 type Msg
-    = BuyPig
-    | HarvestCorn
-    | GrowCorn
+    = TurnedUp
+    | TurnedDown
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        BuyPig ->
-            ( { model | pigs = model.pigs + 1 }
+        TurnedUp ->
+            ( { model | light = model.light + 10 }
             , Cmd.none
             )
+```
 
-        HarvestCorn ->
-            ( { model | corn = model.corn - 1 }
-            , Cmd.none
-            )
-
-        GrowCorn ->
-            ( { model | corn = model.corn + 1 }
-            , Cmd.none
-            )
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
-
-
-viewDocument : Model -> Browser.Document Msg
-viewDocument model =
-    { title = "My Farm", body = [ view model ] }
-
-
-view : Model -> Html Msg
-view model =
-    div []
-        [ Html.button [ Html.Events.onClick BuyPig ] [ text "Buy Pig" ]
-        , Html.button [ Html.Events.onClick HarvestCorn ] [ text "Harvest Corn" ]
-        , Html.Button [ Html.Events.onClick GrowCorn ] [ text "Grow Corn" ]
-        ]
-
-</pre></code>
+![](assets/images/missing-case.png)<!-- .element class="fragment" -->
 
 Note:
-- Client wants Food be differnt to animals
-- Elm can make more complex apps safer but it's also a solid foundation for any UI
-- Imports and Main
-- Model types
-- Initialise model
-- Types of updates
-- handle the updates
-- view
+- The team add the new update message and alter the flicked switch one to be more accurate turned up
+- But there is a problem
+- TICK but not one they can't handle
+- And the broken button never made it to production
 
-+++
+---
 
 <!-- .element class="stage-card" -->
 
@@ -586,6 +622,7 @@ Note:
 
 ![](assets/images/elm-confident.jpg)
 ![](assets/images/react-confident.jpg)
+![](assets/images/and-colours.png)<!-- .element class="wonky20" -->
 
 Note:
 (18 min)
@@ -594,29 +631,45 @@ Note:
 - React team confident. They started to trust each other and have a new, more robust model.
 - Made me reflect that we need to learn to trust each other's tech - and knowlegde & ability to evaluate and make choices in good faith
 
----
-
-<!-- .element class="stage-card" -->
-
-## Build & polish
-
-![](assets/images/elm-excited.jpg)
-![](assets/images/react-excited.jpg)
-
-Note:
-(20 min)
-- Elm Team Excited - they start writing the functionality they need
-- React Team Excited - they know what they need, start installing libraries.
-
 +++
 
-## Holes start appearing
+## What are custom types?
 
-Notes:
-- Funcitonal vs OO
-- You can define an object harevstable and not = but with elm's staic types and funcitons the compiler insists that you run through every possible state.
-- React memories of discovering how to manage state and lifecycle methods.
-- Benefits of pure functions
+```elm
+type Colour
+    = Red
+    | Green
+    | Blue
+
+type alias Model =
+    { brightness : Int
+    , colour: Colour
+    }
+```
+
+<pre><code class="language-elm fragment" data-fragment-index="1">
+type Direction
+  = FromRight Int
+  | FromLeft Int
+  | FromTop
+</code></pre>
+
+<pre><code class="language-elm fragment" data-fragment-index="2">
+type RemoteLight
+  = Failure
+  | Loading
+  | Success { brightness : Int, colour : Colour, direction : Direction }
+</code></pre>
+
+
+Note:
+- Client also wants colour
+- We can use a custom type for that
+- Can also use them in place of generic booleans
+- TICK hey can take arguments so maybe if your light is from the right or left, you also what a distance but form the top you don't need one
+- Or maybe you have a remote light
+- Once you define them, the compiler helps you make sure all possible states are covered
+- Elm can make more complex apps safer but it's also a solid foundation for any UI
 
 +++
 
@@ -630,7 +683,7 @@ Notes:
 Note:
 (22 min)
 - Elm team feeling confident. Their code feels robust. They don't have as many features as they wanted and some of them are a little rough... 
-- React team feeling guilty. They delivered lots of features but less tests than they should have written and they are aware of some cracks.
+- React team feeling guilty. They delivered lots of features but less tests than they should have written and they are aware of some cracks. They may also have over zealously imported some libraries that they are only using one feature of.
 
 ---
 
@@ -644,27 +697,6 @@ Note:
 Note:
 - The Elm team feeling proud and confident to go through the features & code with client
 - The React team are feeling cautious - they realise some of their features are fragile
-
-+++
-
-- features (made it & not)
-- share with clients
-- mutable objects
-- elm storytelling
-
-+++
-
-<!-- .element class="stage-card" -->
-
-## Try it out & show it off
-
-![](assets/images/elm-proud.jpg)
-![](assets/images/react-annoyed.jpg)
-
-Note:
-(25 min)
-- Testing with users and getting acceptance signed off by client
-- The elm team proud of what they have and all works as expected
 - It may have been a side-effect of moving too fast or not building what they need but they remember when in react, feeling annoyed, when they realised they don't need some of the features they built after all
 
 +++
