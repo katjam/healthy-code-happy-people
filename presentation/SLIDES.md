@@ -243,7 +243,62 @@ Note:
 
 +++
 
-### Piping
+## Piping
+
+Instead of...
+
+```elm
+aFunctionWithManySteps data =
+    finallyThisFunction
+       (thenThisFunction
+           (firstThisFunction data))
+```
+
+
+You might prefer...
+
+```elm
+aFunctionWithManySteps data =
+    data
+        |> firstThisFunction
+        |> thenThisFunction
+        |> FinallyThisFunction
+```
+
+
+Note:
+- Elm has a convenient syntax that helps turn the function calls inside out if it feels more natural for you
+
+
+## Modules
+
+```elm
+module MyModule exposing (TypesINeed(WithConstructors), functionINeed)
+```
+
+```elm
+import MyModule exposing (..)
+
+functionINeed
+```
+
+```elm
+import MyModule exposing (functionINeed)
+
+funcitonINeed
+```
+
+```elm
+import MyModule
+
+MyModule.functionINeed
+```
+
+Note:
+- define API of your module with export
+- import everything explicitly
+- import only what you need
+- import only the module and invoke with full notation (considered best)
 
 +++
 
